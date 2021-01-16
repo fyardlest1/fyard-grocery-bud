@@ -106,7 +106,7 @@ function deleteItem(e) {
     const element = e.currentTarget.parentElement.parentElement
     const id = element.dataset.id
     list.removeChild(element)
-    if (list.children === 0) {
+    if (list.children.length === 0) {
         container.classList.remove('show-container')
     }
     displayAlert('item removed', 'danger')
