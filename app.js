@@ -17,6 +17,10 @@ let editID = ''
 form.addEventListener('submit', addItem)
 // clear items
 clearBtn.addEventListener('click', clearItems)
+// delete item btn
+const deleteBtn = document.querySelector('.delete-btn')
+// edit item btn
+
 
 // ****** FUNCTIONS **********
 function addItem(e) {
@@ -41,6 +45,10 @@ function addItem(e) {
               <i class="fas fa-trash"></i>
             </button>
           </div>`
+          const deleteBtn = element.querySelector('.delete-btn')
+          const editBtn = element.querySelector('.edit-btn')
+          deleteBtn.addEventListener('click', deleteItem)
+          editBtn.addEventListener('click', editItem)
         //   append cjild
         list.appendChild(element)
         // display alert
@@ -91,6 +99,15 @@ function clearItems() {
     displayAlert('empty list', 'success')
     setBackToDefault()
     // localStorage.removeItem('list')
+}
+
+// delete function
+function deleteItem() {
+    //
+}
+// edit function
+function editItem() {
+    //
 }
 
 // ****** LOCAL STORAGE **********
