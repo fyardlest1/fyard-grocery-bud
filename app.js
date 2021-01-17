@@ -116,7 +116,7 @@ function deleteItem(e) {
     displayAlert('item removed', 'danger')
     setBackToDefault()
     // remove from local storage
-    // removeFromLocalStorage(id)
+    removeFromLocalStorage(id)
 }
 // edit function
 function editItem(e) {
@@ -134,20 +134,30 @@ function editItem(e) {
 // ****** LOCAL STORAGE **********
 function addToLocalStorage(id, value) {
     const grocery = {id, value}
-    let items = localStorage.getItem('list')
-    ? JSON.parse(localStorage.getItem('list')) : []
-    console.log(items)
+    let items = getLocalStorage()
+    // console.log(items)
     items.push(grocery)
     localStorage.setItem('list', JSON.stringify(items))
     // console.log('added to local storage')
 }
 
 function removeFromLocalStorage(id) {
-    //
+    let items = getLocalStorage()
+    items = items.filter(function(item) {
+        if (item.id !== id) {
+            return item
+        }
+    })
+    localStorage.setItem('list', JSON.stringify(items))
 }
 
 function editLocalStorage(id, value) {
     //
+}
+
+function getLocalStorage() {
+    return localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list')) : []
 }
 // localStorage API
 // setItem
