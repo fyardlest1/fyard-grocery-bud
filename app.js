@@ -63,7 +63,7 @@ function addItem(e) {
         editElement.innerHTML = value
         displayAlert('value changed', 'success')
         // edit local storage
-        // editLocalStorage(editID, value)
+        editLocalStorage(editID, value)
         setBackToDefault()
     } else {
         displayAlert('please enter value', 'danger')
@@ -102,7 +102,7 @@ function clearItems() {
     container.classList.remove('show-container')
     displayAlert('empty list', 'success')
     setBackToDefault()
-    // localStorage.removeItem('list')
+    localStorage.removeItem('list')
 }
 
 // delete function
@@ -152,7 +152,14 @@ function removeFromLocalStorage(id) {
 }
 
 function editLocalStorage(id, value) {
-    //
+    let items = getLocalStorage()
+    items = items.map(function (item) {
+        if (item.id === id) {
+            item.value = value
+        }
+        return item
+    })
+    localStorage.setItem('list', JSON.stringify(items))
 }
 
 function getLocalStorage() {
